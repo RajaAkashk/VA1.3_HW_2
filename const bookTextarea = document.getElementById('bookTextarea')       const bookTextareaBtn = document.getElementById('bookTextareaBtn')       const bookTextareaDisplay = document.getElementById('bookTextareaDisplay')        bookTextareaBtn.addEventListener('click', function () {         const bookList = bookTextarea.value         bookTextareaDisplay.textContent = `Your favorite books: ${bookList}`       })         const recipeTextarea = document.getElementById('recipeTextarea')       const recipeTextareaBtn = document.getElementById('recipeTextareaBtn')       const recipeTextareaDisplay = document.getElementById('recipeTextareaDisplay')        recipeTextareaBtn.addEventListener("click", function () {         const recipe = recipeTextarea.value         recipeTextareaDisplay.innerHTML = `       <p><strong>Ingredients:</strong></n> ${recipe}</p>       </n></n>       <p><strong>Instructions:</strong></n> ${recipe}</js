@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+</head>
+
+<body>
+
+
+<label for="bookTextarea">Enter your favorite book list:</label>
+  <textarea id="bookTextarea" rows=5 cols=25></textarea>
+  <button id="bookTextareaBtn">Display Book List</button>
+  <p id="bookTextareaDisplay"></p>
+
+
+  <label for="recipeTextarea">Enter a recipe:</label>
+  <textarea id="recipeTextarea" rows=5 cols=25></textarea>
+  <button id="recipeTextareaBtn">Display Recipe</button>
+  <p id="recipeTextareaDisplay"></p>
+
+
+  <label for="bioTextarea">Enter Your Personal Bio:</label>
+  <textarea id="bioTextarea" rows=5 cols=25></textarea>
+  <button id="bioTextareaBtn">Display Bio</button>
+  <p id="bioTextareaDisplay">
+
+
+
+    <label for="goalsTextarea">Enter Your Personal Bio:</label>
+    <textarea id="goalsTextarea" rows=5 cols=25></textarea>
+    <button id="goalsTextareaBtn">Display Bio</button>
+  <p id="goalsTextareaDisplay">
+
+
+
+    <label for="storyTextarea">Enter Your short story or anecdote:</label>
+    <textarea id="storyTextarea" rows=5 cols=25></textarea>
+    <button id="storyTextareaBtn">Display Story</button>
+  <p id="storyTextareaDisplay">
+
+  <label for="bookTextarea">Enter your book review:</label>
+  <textarea id="bookTextarea" rows=5 cols=25></textarea>
+  <button id="bookTextareaBtn">Display Book Review</button>
+  <p id="bookTextareaDisplay"></p>
+
+
+
+  <label for="bioTextarea">Enter Your Personal Bio:</label>
+  <textarea id="bioTextarea" rows=5 cols=25></textarea>
+  <button id="bioTextareaBtn">Display Styled Bio</button>
+  <p id="bioTextareaDisplay">
+
+
+
+    <label for="diaryTextarea">Enter Your personal dairy entry:</label>
+    <textarea id="diaryTextarea" rows=5 cols=25></textarea>
+    <button id="diaryTextareaBtn">Display Diary</button>
+  <p id="diaryTextareaDisplay">
+
+
+    <script>
+const bookTextarea = document.getElementById('bookTextarea')
+      const bookTextareaBtn = document.getElementById('bookTextareaBtn')
+      const bookTextareaDisplay = document.getElementById('bookTextareaDisplay')
+
+      bookTextareaBtn.addEventListener('click', function () {
+        const bookList = bookTextarea.value
+        bookTextareaDisplay.textContent = `Your favorite books: ${bookList}`
+      })
+
+
+      const recipeTextarea = document.getElementById('recipeTextarea')
+      const recipeTextareaBtn = document.getElementById('recipeTextareaBtn')
+      const recipeTextareaDisplay = document.getElementById('recipeTextareaDisplay')
+
+      recipeTextareaBtn.addEventListener("click", function () {
+        const recipe = recipeTextarea.value
+        recipeTextareaDisplay.innerHTML = `
+      <p><strong>Ingredients:</strong></n> ${recipe}</p>
+      </n></n>
+      <p><strong>Instructions:</strong></n> ${recipe}</p>
+      `
+      })
+
+
+      const bioTextarea = document.getElementById('bioTextarea')
+      const bioTextareaBtn = document.getElementById('bioTextareaBtn')
+      const bioTextareaDisplay = document.getElementById('bioTextareaDisplay')
+
+      bioTextareaBtn.addEventListener('click', function () {
+        const bio = bioTextarea.value
+        bioTextareaDisplay.textContent = `Your personal bio: ${bio}`
+      })
+
+
+
+      const goalsTextarea = document.getElementById('goalsTextarea')
+      const goalsTextareaBtn = document.getElementById('goalsTextareaBtn')
+      const goalsTextareaDisplay = document.getElementById('goalsTextareaDisplay')
+
+      goalsTextareaBtn.addEventListener('click', function () {
+        const goals = goalsTextarea.value
+        goalsTextareaDisplay.textContent = `Your lists of goals: ${goals}`
+      })
+
+
+
+      const storyTextarea = document.getElementById('storyTextarea')
+      const storyTextareaBtn = document.getElementById('storyTextareaBtn')
+      const storyTextareaDisplay = document.getElementById('storyTextareaDisplay')
+
+      storyTextareaBtn.addEventListener('click', function () {
+        const story = storyTextarea.value
+        storyTextareaDisplay.textContent = `Your shorty story: ${story}`
+      })
+
+      const bookTextarea = document.getElementById('bookTextarea')
+      const bookTextareaBtn = document.getElementById('bookTextareaBtn')
+      const bookTextareaDisplay = document.getElementById('bookTextareaDisplay')
+
+      bookTextareaBtn.addEventListener('click', function () {
+        const bookReview = bookTextarea.value
+        bookTextareaDisplay.textContent = `Your book review: ${bookReview}`
+      })
+
+
+
+      const bioTextarea = document.getElementById('bioTextarea')
+      const bioTextareaBtn = document.getElementById('bioTextareaBtn')
+      const bioTextareaDisplay = document.getElementById('bioTextareaDisplay')
+
+      bioTextareaBtn.addEventListener('click', function () {
+        const bio = bioTextarea.value
+        bioTextareaDisplay.innerHTML = `<p><em>${bio}</em></p>`
+      })
+
+
+      const diaryTextarea = document.getElementById('diaryTextarea')
+      const diaryTextareaBtn = document.getElementById('diaryTextareaBtn')
+      const diaryTextareaDisplay = document.getElementById('diaryTextareaDisplay')
+
+      diaryTextareaBtn.addEventListener('click', function () {
+        const dairy = diaryTextarea.value;
+        const currentDateTime = new Date().toLocaleString();
+
+
+        diaryTextareaDisplay.innerHTML = `<p><strong>${currentDateTime}</strong></p> <p>${dairy}</p>`
+
+
+      })
+
+
+    </script>
+</body>
+
+</html>
