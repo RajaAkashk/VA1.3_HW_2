@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>User Waitlist Form</h1>
+    <form id="WaitlistForm">
+      <label for="name">Full Name: </label>
+      <input type="type" id="name" required />
+      <br />
+      <br />
+      <label for="number">Phone Number: </label>
+      <input type="number" id="number" required />
+      <br />
+      <br />
+      <label for="email">Email Id: </label>
+      <input type="email" id="email" required />
+      <br />
+      <br />
+      <label for="gender">Gender:</label> <br />
+      <input type="radio" name="gender" value="Male" />Male <br />
+      <input type="radio" name="gender" value="Female" />Female <br />
+      <input type="radio" name="gender" value="Other" />Other <br />
+      <br />
+
+      <label for="graduate">Are you college graduate:</label> <br />
+      <input type="radio" name="graduate" value="Yes" />Yes <br />
+      <input type="radio" name="graduate" value="No" />No <br />
+      <input type="radio" name="graduate" value="Dropout" />Dropout <br />
+      <br />
+
+      <label for="experience"
+        >Are you working anywhere full-time or part-time?:
+      </label>
+      <select id="experience">
+        <option value="Working Full Time">Working Full Time</option>
+        <option value="Working Part Time">Working Part Time</option>
+        <option value="Not Working">Not Working</option>
+      </select>
+      <br />
+      <br />
+      <label for="answer">Why do you want to learn web development:</label>
+      <br />
+      <textarea rows="5" cols="45" id="answer"></textarea>
+      <br />
+      <br />
+      <label for="info">How do you come to know about us:</label> <br />
+      <input type="checkbox" name="info" value="YouTube" />YouTube
+      <br />
+      <input type="checkbox" name="info" value="Instagram" />Instagram
+      <br />
+      <input type="checkbox" name="info" value="Linkedin" />Linkedin <br />
+      <input type="checkbox" name="info" value="Twitter" />Twitter <br />
+      <input type="checkbox" name="info" value="Friends and Family" />Friends
+      and Family <br />
+      <br />
+      <label for="okay">
+        <input type="checkbox" id="okay" required />I confirm all information in
+        this form is factually true.</label
+      >
+      <br />
+      <br />
+      <input type="submit" value="Submit Details" />
+    </form>
+    <div id="showResult"></div>
+
+    <script>
+      const WaitlistForm = document.querySelector("#WaitlistForm");
+      WaitlistForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const name = document.querySelector("#name").value;
+        const email = document.querySelector("#email").value;
+        const number = document.querySelector("#number").value;
+        const gender = document.querySelector(
+          `input[name="gender"]:checked`
+        ).value;
+        const graduate = document.querySelector(
+          `input[name="graduate"]:checked`
+        ).value;
+        const working = document.querySelector("#experience").value;
+        const answer = document.querySelector("#answer").value;
+        const info = document.querySelectorAll(`input[name="info"]:checked`);
+        let infomationList = [];
+        for (let i = 0; i < info.length; i++) {
+          infomationList.push(info[i].value);
+        }
+
+        const result = `
+        <h2>Details Submitted:</h2>
+        <p><strong>Name: </strong>${name}</p>
+         <p><strong>Phone Number: </strong>${number}</p>
+          <p><strong>Email ID: </strong>${email}</p>
+           <p><strong>Gender: </strong>${gender}</p>
+            <p><strong>Are you a college graduate?: </strong>${graduate}</p>
+             <p><strong>Are you working anywhere full-time or part-time?: </strong>${working}</p>
+              <p><strong>Why do you want to learn web development: </strong>${answer}</p>
+               <p><strong>How do you come to know about us: </strong>${infomationList.join(
+                 ", "
+               )}</p>
+
+        `;
+        const showResult = document.querySelector("#showResult");
+        showResult.innerHTML = result;
+        console.log(showResult);
+        console.log(result);
+      });
+    </script>
+  </body>
+</html>
