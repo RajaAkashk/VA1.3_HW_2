@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+  </head>
+  <body>
+    <h1>MCR Event Registration Form</h1>
+    <form id="registrationForm">
+      <label for="name">Name: </label>
+      <input type="text" id="name" required /> <br />
+      <br />
+      <label for="email">Email Address: </label>
+      <input type="email" id="email" required /> <br />
+      <br />
+      <label for="eventType">Event Type:</label><br />
+      <input type="radio" name="eventType" value="Conference" />Conference<br />
+      <input type="radio" name="eventType" value="Workshop" />Workshop<br />
+      <input type="radio" name="eventType" value="Networking" />Networking<br />
+      <br />
+      <label for="diet">Dietary Restrictions:</label><br />
+      <input type="checkbox" name="diet" value="Vegetarian" />Vegetarian<br />
+      <input type="checkbox" name="diet" value="Vegan" />Vegan<br />
+      <input type="checkbox" name="diet" value="Gluten-Free" />Gluten-Free<br />
+      <br />
+      <label for="selectSize">T-Shirt Size: </label>
+      <select id="selectSize">
+        <option value="Small">Small</option>
+        <option value="Medium">Medium</option>
+        <option value="Large">Large</option>
+      </select>
+      <br /><br />
+      <input type="submit" value="Register" />
+    </form>
+    <div id="showResult"></div>
+    <script>
+      const registrationForm = document.querySelector("#registrationForm");
+      registrationForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const name = document.querySelector("#name").value;
+        const email = document.querySelector("#email").value;
+        const eventType = document.querySelector(
+          `input[name="eventType"]:checked`
+        ).value;
+        const diet = document.querySelectorAll(`input[name="diet"]`);
+        const dietRestriction = [];
+
+        for (let i = 0; i < diet.length; i++) {
+          if (diet[i].checked) {
+            dietRestriction.push(diet[i].value);
+          }
+        }
+        const selectSize = document.querySelector("#selectSize").value;
+        const showResult = document.querySelector("#showResult");
+
+        const result = `
+        <h2>Registration Details</h2>
+        <p><strong>Name: </strong>${name}</p>
+         <p><strong>Email: </strong>${email}</p>
+          <p><strong>Event Type: </strong>${eventType}</p>
+           <p><strong>Dietary Restriction: </strong>${dietRestriction.join(
+             ", "
+           )}</p>
+            <p><strong>T-shirt Size: </strong>${selectSize}</p>
+        `;
+        const valueOfa = email.indexOf("@");
+        const valueOfDot = email.indexOf(".");
+        if (valueOfa && valueOfDot > valueOfa) {
+          showResult.innerHTML = result;
+        } else {
+          alert("Invalid email address. check @ or . in your email address.");
+        }
+
+        console.log(selectSize, dietRestriction.join(","));
+      });
+    </script>
+  </body>
+</html>
