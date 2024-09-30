@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Product Order Form</h1>
+    <form id="productForm">
+      <label for="name">Product Name: </label>
+      <input id="name" type="text" required />
+      <br />
+      <br />
+      <label for="quantity">Quantity: </label>
+      <input id="quantity" type="number" required />
+      <br />
+      <br />
+      <label for="address">Shipping Address:</label><br />
+      <textarea id="address" rows="5" cols="45" required></textarea>
+      <br />
+      <br />
+      <label>Payment Method:</label> <br />
+      <input type="radio" value="Credit Card" name="paymentMethod" />Credit Card
+      <br />
+      <input type="radio" value="PayPal" name="paymentMethod" />PayPal <br />
+      <input type="radio" value="Bank Transfer" name="paymentMethod" />Bank
+      Transfer <br />
+      <br />
+      <label for="deliverySpeed">Delivery Speed: </label>
+      <select id="deliverySpeed">
+        <option value="Standard">Standard</option>
+        <option value="Express">Express</option>
+        <option value="Same Day">Same Day</option>
+      </select>
+      <br />
+      <br />
+      <input type="submit" value="Place Order" />
+    </form>
+    <div id="showResult"></div>
+
+    <script>
+      const productForm = document.querySelector("#productForm");
+      productForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const productName = document.querySelector("#name").value;
+        const quantity = document.querySelector("#quantity").value;
+        const address = document.querySelector("#address").value;
+        // const paymentMethod = document.querySelector(
+        //   `input[name="paymentMethod"]:checked`
+        // ).value;
+        const paymentMethod = document.getElementsByName("paymentMethod");
+        let checkedValue;
+        for (let i = 0; i < paymentMethod.length; i++) {
+          if (paymentMethod[i].checked) {
+            checkedValue = paymentMethod[i].value;
+          }
+        }
+
+        const selectDelivery = document.querySelector("#deliverySpeed").value;
+        const showResult = document.querySelector("#showResult");
+
+        const result = `
+              <h2>Order Details<h2>
+                  <p><strong>Product Name: </strong> ${productName}</p>
+                     <p><strong>Quantity: </strong>${quantity}</p>
+                         <p><strong>Address: </strong>${address}</p>
+                             <p><strong>Payment Method: </strong>${checkedValue}</p>
+                                  <p><strong>Delivery Speed: </strong>${selectDelivery}</p>
+              `;
+        showResult.innerHTML = result;
+      });
+    </script>
+  </body>
+</html>
